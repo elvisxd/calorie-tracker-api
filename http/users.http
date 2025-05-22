@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:3000/api
+@contentType = application/json
+
+### Obtener todos los usuarios
+GET {{baseUrl}}/users
+Content-Type: {{contentType}}
+
+### Obtener un usuario por ID (reemplaza el ID)
+# Reemplaza el ID por uno válido después de crear un usuario
+@userId = cc8a0a5f-b369-4eb0-8f85-1baf9640059a
+GET {{baseUrl}}/users/{{userId}}
+Content-Type: {{contentType}}
+
+### Crear un nuevo usuario
+POST {{baseUrl}}/users
+Content-Type: {{contentType}}
+
+{
+  "email": "usuario1@example.com",
+  "password_hash": "hash123456",
+  "full_name": "Usuario de Prueba"
+}
+
+### Actualizar un usuario (reemplaza el ID)
+# Reemplaza el ID por uno válido después de crear un usuario
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: {{contentType}}
+
+{
+  "full_name": "Nombre Actualizado"
+}
+
+### Eliminar un usuario (reemplaza el ID)
+# Reemplaza el ID por uno válido después de crear un usuario
+DELETE {{baseUrl}}/users/{{userId}}
+Content-Type: {{contentType}}

@@ -1,0 +1,45 @@
+@baseUrl = http://localhost:3000/api
+@userId = cc8a0a5f-b369-4eb0-8f85-1baf9640059a
+
+### Obtener el perfil de un usuario
+GET {{baseUrl}}/user-profiles/{{userId}}
+Content-Type: application/json
+
+### Crear o actualizar el perfil de un usuario
+PUT {{baseUrl}}/user-profiles/{{userId}}
+Content-Type: application/json
+
+{
+  "height_cm": 175,
+  "weight_kg": 70,
+  "age": 30,
+  "gender": "male",
+  "activity_level": 1.55,
+  "daily_calorie_goal": 2200,
+  "daily_protein_goal": 165,
+  "daily_carbs_goal": 220,
+  "daily_fat_goal": 73
+}
+
+### Calcular objetivos nutricionales para mantener peso
+GET {{baseUrl}}/user-profiles/{{userId}}/nutrition-goals?goal_type=maintain
+Content-Type: application/json
+
+### Calcular objetivos nutricionales para perder peso
+GET {{baseUrl}}/user-profiles/{{userId}}/nutrition-goals?goal_type=lose
+Content-Type: application/json
+
+### Calcular objetivos nutricionales para ganar peso
+GET {{baseUrl}}/user-profiles/{{userId}}/nutrition-goals?goal_type=gain
+Content-Type: application/json
+
+### Actualizar objetivos nutricionales
+PUT {{baseUrl}}/user-profiles/{{userId}}/nutrition-goals
+Content-Type: application/json
+
+{
+  "daily_calorie_goal": 2000,
+  "daily_protein_goal": 150,
+  "daily_carbs_goal": 200,
+  "daily_fat_goal": 67
+}

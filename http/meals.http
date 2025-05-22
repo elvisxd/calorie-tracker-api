@@ -1,0 +1,80 @@
+@baseUrl = http://localhost:3000/api
+@userId = cc8a0a5f-b369-4eb0-8f85-1baf9640059a
+@mealId = reemplazar-con-id-real
+@foodItemId = 14030886-f6ec-4373-a347-75fb6c2f4bb3
+
+### Obtener todas las comidas de un usuario
+GET {{baseUrl}}/meals?user_id={{userId}}
+Content-Type: application/json
+
+### Obtener comidas de un usuario filtradas por fecha
+GET {{baseUrl}}/meals?user_id={{userId}}&start_date=2023-01-01&end_date=2023-12-31
+Content-Type: application/json
+
+### Obtener comidas de un usuario filtradas por tipo
+GET {{baseUrl}}/meals?user_id={{userId}}&meal_type=breakfast
+Content-Type: application/json
+
+### Obtener el resumen diario de comidas de un usuario
+GET {{baseUrl}}/meals/daily-summary?user_id={{userId}}&date=2023-05-15
+Content-Type: application/json
+
+### Obtener una comida específica con sus alimentos
+GET {{baseUrl}}/meals/{{mealId}}
+Content-Type: application/json
+
+### Crear una nueva comida
+POST {{baseUrl}}/meals
+Content-Type: application/json
+
+{
+  "user_id": "{{userId}}",
+  "name": "Desayuno saludable",
+  "description": "Un desayuno balanceado con frutas y proteínas",
+  "meal_type": "breakfast",
+  "food_items": [
+    {
+      "food_item_id": "id-de-manzana",
+      "amount": 182
+    },
+    {
+      "food_item_id": "id-de-yogur",
+      "amount": 200
+    }
+  ]
+}
+
+### Actualizar una comida existente
+PUT {{baseUrl}}/meals/{{mealId}}
+Content-Type: application/json
+
+{
+  "name": "Desayuno actualizado",
+  "description": "Descripción actualizada",
+  "meal_type": "breakfast"
+}
+
+### Agregar un alimento a una comida
+POST {{baseUrl}}/meals/{{mealId}}/food-items
+Content-Type: application/json
+
+{
+  "food_item_id": "{{foodItemId}}",
+  "amount": 100
+}
+
+### Actualizar un alimento en una comida
+PUT {{baseUrl}}/meals/{{mealId}}/food-items/{{foodItemId}}
+Content-Type: application/json
+
+{
+  "amount": 150
+}
+
+### Eliminar un alimento de una comida
+DELETE {{baseUrl}}/meals/{{mealId}}/food-items/{{foodItemId}}
+Content-Type: application/json
+
+### Eliminar una comida
+DELETE {{baseUrl}}/meals/{{mealId}}
+Content-Type: application/json

@@ -1,0 +1,42 @@
+@baseUrl = http://localhost:3000/api
+@userId = cc8a0a5f-b369-4eb0-8f85-1baf9640059a
+@weightLogId = reemplazar-con-id-real
+
+### Obtener todos los registros de peso de un usuario
+GET {{baseUrl}}/weight-logs?user_id={{userId}}
+Content-Type: application/json
+
+### Obtener registros de peso filtrados por fecha
+GET {{baseUrl}}/weight-logs?user_id={{userId}}&start_date=2023-01-01&end_date=2023-12-31
+Content-Type: application/json
+
+### Obtener un registro de peso específico
+GET {{baseUrl}}/weight-logs/{{weightLogId}}
+Content-Type: application/json
+
+### Obtener el resumen de progreso de peso de un usuario
+GET {{baseUrl}}/weight-logs/progress/{{userId}}
+Content-Type: application/json
+
+### Crear un nuevo registro de peso
+POST {{baseUrl}}/weight-logs
+Content-Type: application/json
+
+{
+  "user_id": "{{userId}}",
+  "weight_kg": 70.5,
+  "notes": "Peso después del desayuno"
+}
+
+### Actualizar un registro de peso existente
+PUT {{baseUrl}}/weight-logs/{{weightLogId}}
+Content-Type: application/json
+
+{
+  "weight_kg": 70.2,
+  "notes": "Peso actualizado"
+}
+
+### Eliminar un registro de peso
+DELETE {{baseUrl}}/weight-logs/{{weightLogId}}
+Content-Type: application/json
