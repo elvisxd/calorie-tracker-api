@@ -16,9 +16,9 @@ POST {{baseUrl}}/users
 Content-Type: {{contentType}}
 
 {
-  "email": "usuario1@example.com",
-  "password_hash": "hash123456",
-  "full_name": "Usuario de Prueba"
+  "email": "elvisreyxd@gamil.com",
+  "password_hash": "123456",
+  "full_name": "elvis pino"
 }
 
 ### Actualizar un usuario (reemplaza el ID)

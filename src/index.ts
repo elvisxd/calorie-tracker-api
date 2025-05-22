@@ -8,6 +8,7 @@ import { errorHandler, notFound } from "./middleware/error.middleware";
 import mealRoutes from "./routes/meal.routes";
 import userProfileRoutes from "./routes/user-profile.routes";
 import weightLogRoutes from "./routes/weight-log.routes";
+import authRoutes from "./routes/auth.route";
 
 dotenv.config();
 
@@ -26,8 +27,10 @@ app.get("/", (req, res) => {
     message: "API de Conteo de Calorías",
     version: "1.0.0",
     endpoints: {
+      auth: "/api/auth",
       users: "/api/users",
       foodItems: "/api/food-items",
+      health: "/health",
     },
   });
 });
@@ -38,6 +41,7 @@ app.use("/api/food-items", foodItemsRoutes);
 app.use("/api/meals", mealRoutes);
 app.use("/api/user-profiles", userProfileRoutes);
 app.use("/api/weight-logs", weightLogRoutes);
+app.use("/api/auth", authRoutes);
 
 // Ruta de verificación de salud
 app.get("/health", (req, res) => {

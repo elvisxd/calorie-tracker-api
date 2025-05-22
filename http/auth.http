@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:3000/api
+@contentType = application/json
+
+### Registro de un nuevo usuario
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "email": "test@example.com",
+  "password": "securepassword123",
+  "full_name": "Usuario de Prueba"
+}
+
+### Iniciar sesión
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "test@example.com",
+  "password": "securepassword123"
+}
+
+### Refrescar token
+# Guarda el refreshToken de la respuesta de login o registro aquí
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+POST {{baseUrl}}/auth/refresh-token
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Cerrar sesión
+POST {{baseUrl}}/auth/logout
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Olvidé mi contraseña
+POST {{baseUrl}}/auth/forgot-password
+Content-Type: {{contentType}}
+
+{
+  "email": "test@example.com"
+}
+
+### Restablecer contraseña
+# Usa el token recibido en el correo o en desarrollo
+@resetToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+POST {{baseUrl}}/auth/reset-password
+Content-Type: {{contentType}}
+
+{
+  "token": "{{resetToken}}",
+  "newPassword": "nuevaContraseña123"
+}
